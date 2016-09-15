@@ -2,7 +2,8 @@ import * as AppConstants from '../constants/app.js';
 
 const initSate = {
     user: null,
-    token: null
+    token: null,
+    status: null
 };
 
 export default function App(state = initSate, action) {
@@ -14,6 +15,10 @@ export default function App(state = initSate, action) {
         case AppConstants.SET_TOKEN:
             return Object.assign({}, state, {
                 token: action.data
+            });
+        case AppConstants.SET_USER_STATUS:
+            return Object.assign({}, state, {
+                status: action.data
             });
         case AppConstants.CLEAR:
             return initSate;

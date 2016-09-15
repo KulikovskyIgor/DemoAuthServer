@@ -73,6 +73,18 @@ app.all(`/register`, (req, res) => {
     });
 });
 
+app.all(`/online`, (req, res) => {
+    proxy.web(req, res, {
+        target: apiHost
+    });
+});
+
+app.all(`/logout`, (req, res) => {
+    proxy.web(req, res, {
+        target: apiHost
+    });
+});
+
 app.listen(port, host, (err) => {
     if (err) {
         console.log(err);

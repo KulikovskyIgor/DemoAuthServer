@@ -27,6 +27,9 @@ $form--login__submit__bgcolor: #ea4c88;
 $form--login__submit__bgcolor--hover: #d44179;
 $form--login__submit__color: #eee;
 $form--registration__success__color: #2fa628;
+$form--registration__success--hover: #278620;
+$form--home-logout: #bc5238;
+$form--home-logout-hover: #a64e34;
 
 $grid__container__max-width: 20rem;
 $grid__container__width: 90%;
@@ -84,6 +87,13 @@ input {
 
 }
 
+.box-text-style {
+  background-color: $form--login__submit__bgcolor;
+  color: $form--login__submit__color;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 // Forms
 
 .form {
@@ -98,7 +108,7 @@ input {
 
   }
 
-  &--login, &--registration {
+  &--login, &--registration, &--home {
     color: $form--login__color;
 
     label,
@@ -107,6 +117,7 @@ input {
     input[type="submit"] {
       border-radius: $form--login__border-radus;
       padding: 1rem;
+      z-index: 3;
     }
 
     label {
@@ -133,16 +144,60 @@ input {
       }
 
       &[type="submit"] {
-        background-color: $form--login__submit__bgcolor;
-        color: $form--login__submit__color;
-        font-weight: bold;
-        text-transform: uppercase;
+        @extend .box-text-style;
 
         &:focus,
         &:hover {
           background-color: $form--login__submit__bgcolor--hover;
         }
+      }
+    }
+  }
 
+  &--home {
+
+    .user-name {
+      @extend .box-text-style;
+      width: 100%;
+      text-align: center;
+      line-height: 50px;
+      margin-left: -50px;
+      background-color: $form--login__color;
+    }
+
+    .user-status{
+      @extend .box-text-style;
+      width: 100%;
+      text-align: center;
+      line-height: 50px;
+
+      &.online{
+        background-color: #6be54c;
+      }
+      &.offline{
+        background-color: #ff536a;
+      }
+    }
+
+    .online {
+      input {
+        background: $form--registration__success__color;
+
+        &:focus,
+        &:hover {
+          background-color: $form--registration__success--hover;
+        }
+      }
+    }
+
+    .logout {
+      input {
+        background: $form--home-logout;
+
+        &:focus,
+        &:hover {
+          background-color:  $form--home-logout-hover;
+        }
       }
     }
   }
@@ -158,12 +213,12 @@ input {
 
   &__error {
     justify-content: center;
-    color:  $form--login__submit__bgcolor--hover;
+    color: $form--login__submit__bgcolor--hover;
   }
 
   &__success {
     justify-content: center;
-    color:  $form--registration__success__color;
+    color: $form--registration__success__color;
   }
 
 }
