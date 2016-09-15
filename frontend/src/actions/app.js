@@ -7,6 +7,13 @@ export function SET_USER(data){
     }
 }
 
+export function SET_TOKEN(data){
+    return {
+        type: AppConstants.SET_TOKEN,
+        data
+    }
+}
+
 export function CLEAR(){
     return {
         type: AppConstants.CLEAR

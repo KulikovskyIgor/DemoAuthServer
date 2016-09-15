@@ -1,37 +1,43 @@
-import * as LoginConstants from '../constants/login';
+import * as RegistrationConstants from '../constants/registration';
 import * as AppActions from '../actions/app';
 import {getAsUriParameters} from '../utils/helpers';
 
 export function SET_USERNAME(data) {
     return {
-        type: LoginConstants.LOGIN_SET_USERNAME,
+        type: RegistrationConstants.REGISTRATION_SET_USERNAME,
         data
     }
 }
 
 export function SET_PASSWORD(data) {
     return {
-        type: LoginConstants.LOGIN_SET_PASSWORD,
+        type: RegistrationConstants.REGISTRATION_SET_PASSWORD,
         data
     }
 }
 
 export function SET_ERROR(data) {
     return {
-        type: LoginConstants.LOGIN_SET_ERROR,
+        type: RegistrationConstants.REGISTRATION_SET_ERROR,
         data
+    }
+}
+
+export function SET_REGISTERED() {
+    return {
+        type: RegistrationConstants.REGISTRATION_SET_REGISTERED
     }
 }
 
 export function CLEAR() {
     return {
-        type: LoginConstants.LOGIN_CLEAR
+        type: RegistrationConstants.REGISTRATION_CLEAR
     }
 }
 
-export function LOGIN(username, password) {
+export function REGISTER(username, password) {
     return (dispatch, getStore) => {
-        return fetch(`/login`, {
+        return fetch(`/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -48,8 +54,7 @@ export function LOGIN(username, password) {
                 if(data.error){
                     throw new Error(data.error);
                 }else{
-                    dispatch(AppActions.SET_USER(data.user));
-                    dispatch(AppActions.SET_TOKEN(data.token));
+                    dispatch(SET_REGISTERED());
                 }
             })
             .catch(ex => {

@@ -10,7 +10,7 @@ class Login extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if(nextProps.app.user){
+        if (nextProps.app.user) {
             this.context.router.push('home');
         }
     }
@@ -54,7 +54,11 @@ class Login extends Component {
                     : null
                 }
                 <p className="text--center">Not a member?
-                    <a href="#">Sign up now</a>
+                    <a href="#"
+                       onClick={this.handleSignUp}
+                    >
+                        Sign up now
+                    </a>
                     <span className="fontawesome-arrow-right"></span>
                 </p>
             </div>
@@ -67,6 +71,11 @@ class Login extends Component {
 
     handleChangePassword = (e) => {
         this.props.actions.SET_PASSWORD(e.target.value);
+    }
+
+    handleSignUp = (e) => {
+        e.preventDefault();
+        this.context.router.push('registration');
     }
 
     handleSignIn = (e) => {
