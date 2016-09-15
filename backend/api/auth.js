@@ -35,7 +35,7 @@ exports.default = function (app) {
     });
 
     app.get('/logout', function (req, res) {
-        req.session.destroy();
+        //TODO Implementation of the blacklist
         res.status(200).json({message: 'Logout is successful.'});
     });
 
