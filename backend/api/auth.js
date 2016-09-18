@@ -17,7 +17,7 @@ exports.default = function (app) {
     app.post('/login', function (req, res) {
         if (req.body.username && req.body.password) {
             if (usersStore.isRegistered(req.body.username, req.body.password)) {
-                var user = usersStore.get(req.body.username, req.body.password);
+                var user = usersStore.get(req.body.username);
                 var token = jwt.sign(user, conf.secret, {
                     expiresIn: conf.tokenExpiresIn
                 });

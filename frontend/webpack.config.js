@@ -26,7 +26,9 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ProvidePlugin({
-            _: 'lodash'
+            _: 'lodash',
+            'Promise': 'es6-promise',
+            'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
         }),
     ],
     module: {

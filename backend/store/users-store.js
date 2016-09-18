@@ -10,6 +10,6 @@ exports.get = function (username) {
     return users[username];
 }
 
-exports.isRegistered = function (username) {
-    return users.hasOwnProperty(username);
+exports.isRegistered = function (username, password) {
+    return users.hasOwnProperty(username) && users[username].password === password;
 }
